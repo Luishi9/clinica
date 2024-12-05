@@ -251,7 +251,7 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 1) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="../../backend/js/script.js"></script>
+    <!-- <script src="../../backend/js/script.js"></script> -->
 
     <!-- Data Tables -->
     <script type="text/javascript" src="../../backend/js/datatable.js"></script>

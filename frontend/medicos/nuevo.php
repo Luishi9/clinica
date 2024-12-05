@@ -159,6 +159,20 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 1) {
                 <div class="containerss">
                     <h1>Nuevo médico</h1>
                     <?php include_once '../../backend/php/add_doctor.php' ?>
+                    <!-- Pop-up de Cookies -->
+                    <div id="cookiePopup" class="hide">
+                        <img src="../../backend/img/error.png" />
+                        <p>Ya existe el registro a agregar!</p>
+                        <button id="acceptCookie" type="button">OK</button>
+                    </div>
+
+                    <!-- Mensajes de error o éxito -->
+                    <?php if (isset($errMSG)) {
+                        echo "<div class='alert-danger'>$errMSG</div>";
+
+                        echo "<script type='text/javascript'>alert('$errMSG');</script>";
+                    } ?>
+
                     <div class="alert-danger">
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                         <strong>Importante!</strong> Es importante rellenar los campos con &nbsp;<span class="badge-warning">*</span>
@@ -215,6 +229,7 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 1) {
 
             </form>
 
+
         </main>
         <!-- MAIN -->
     </section>
@@ -225,10 +240,26 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 1) {
 
     <!-- <script src="../../backend/js/script.js"></script> -->
     <script src="../../backend/js/multistep.js"></script>
-    <script src="../../backend/js/vpat.js"></script>
+    <script src="../../backend/js/valNuevoDoc.js"></script>
 
 
     <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verifica si PHP estableció la variable para mostrar el pop-up
+            const showPopup = <?php echo json_encode($showPopup); ?>;
+
+            if (showPopup) {
+                const popup = document.getElementById('cookiePopup');
+                popup.classList.remove('hide'); // Muestra el pop-up
+
+                // Escucha el botón "OK" para cerrar el pop-up
+                document.getElementById('acceptCookie').addEventListener('click', function() {
+                    popup.classList.add('hide'); // Oculta el pop-up
+                });
+            }
+        });
+
+
         let popUp = document.getElementById("cookiePopup");
         //When user clicks the accept button
         document.getElementById("acceptCookie").addEventListener("click", () => {
