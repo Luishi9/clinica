@@ -18,8 +18,58 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 1) {
     <link rel="stylesheet" href="../../backend/css/admin.css">
     <link rel="icon" type="image/png" sizes="96x96" href="../../backend/img/ico.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <title>Clínica Salud | Nuevo médico</title>
+
+    <style>
+        /* Estilos del Popup */
+        main{
+            background: #F1F0F6;
+            border-radius: 8px;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .popup-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            width: 300px;
+        }
+
+        .popup img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .popup .closebtn {
+            font-size: 20px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        /* Para hacer que el popup se vea */
+        .popup.show {
+            display: flex;
+        }
+
+        
+    </style>
 </head>
 
 <body>
@@ -159,19 +209,18 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 1) {
                 <div class="containerss">
                     <h1>Nuevo médico</h1>
                     <?php include_once '../../backend/php/add_doctor.php' ?>
-                    <!-- Pop-up de Cookies -->
-                    <div id="cookiePopup" class="hide">
-                        <img src="../../backend/img/error.png" />
-                        <p>Ya existe el registro a agregar!</p>
-                        <button id="acceptCookie" type="button">OK</button>
-                    </div>
 
-                    <!-- Mensajes de error o éxito -->
-                    <?php if (isset($errMSG)) {
-                        echo "<div class='alert-danger'>$errMSG</div>";
-
-                        echo "<script type='text/javascript'>alert('$errMSG');</script>";
-                    } ?>
+                    <!-- Aquí se controlará si se muestra el popup de éxito o error -->
+                    <?php if (isset($errMSG)) { ?>
+                        <div id="popup" class="popup">
+                            <div class="popup-content">
+                                <span class="closebtn" onclick="closePopup()">&times;</span>
+                                <img src="<?php echo (isset($showPopup) && $showPopup) ? '../../backend/img/error.png' : '../../backend/img/404-tick.png'; ?>" />
+                                <p><?php echo $errMSG; ?></p>
+                                <button type="button" class="btn btn-info" id="acceptCookie"  onclick="closePopup()">OK</button>
+                            </div>
+                        </div>
+                    <?php } ?>
 
                     <div class="alert-danger">
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
@@ -180,7 +229,7 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 1) {
                     <hr>
 
                     <label for="email"><b>Cédula del médico</b></label><span class="badge-warning">*</span>
-                    <input type="text" placeholder="ejm: 09741478" name="cem" maxlength="8" required>
+                    <input class="form-control" type="text" placeholder="ejm: 09741478" name="cem" maxlength="8" required>
 
                     <label for="psw"><b>Nombre del médico</b></label><span class="badge-warning">*</span>
                     <input type="text" placeholder="ejm: Juan Raul" name="named" required>
@@ -244,56 +293,23 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 1) {
 
 
     <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() {
-            // Verifica si PHP estableció la variable para mostrar el pop-up
-            const showPopup = <?php echo json_encode($showPopup); ?>;
-
-            if (showPopup) {
-                const popup = document.getElementById('cookiePopup');
-                popup.classList.remove('hide'); // Muestra el pop-up
-
-                // Escucha el botón "OK" para cerrar el pop-up
-                document.getElementById('acceptCookie').addEventListener('click', function() {
-                    popup.classList.add('hide'); // Oculta el pop-up
-                });
-            }
-        });
-
-
-        let popUp = document.getElementById("cookiePopup");
-        //When user clicks the accept button
-        document.getElementById("acceptCookie").addEventListener("click", () => {
-            //Create date object
-            let d = new Date();
-            //Increment the current time by 1 minute (cookie will expire after 1 minute)
-            d.setMinutes(2 + d.getMinutes());
-            //Create Cookie withname = myCookieName, value = thisIsMyCookie and expiry time=1 minute
-            document.cookie = "myCookieName=thisIsMyCookie; expires = " + d + ";";
-            //Hide the popup
-            popUp.classList.add("hide");
-            popUp.classList.remove("shows");
-        });
-        //Check if cookie is already present
-        const checkCookie = () => {
-            //Read the cookie and split on "="
-            let input = document.cookie.split("=");
-            //Check for our cookie
-            if (input[0] == "myCookieName") {
-                //Hide the popup
-                popUp.classList.add("hide");
-                popUp.classList.remove("shows");
+        document.addEventListener("DOMContentLoaded", function() {
+            const popup = document.getElementById("popup");
+            if (popup) {
+                popup.classList.add("show");
             } else {
-                //Show the popup
-                popUp.classList.add("shows");
-                popUp.classList.remove("hide");
+                console.error("Elemento 'popup' no encontrado en el DOM.");
             }
-        };
-        //Check if cookie exists when page loads
-        window.onload = () => {
-            setTimeout(() => {
-                checkCookie();
-            }, 2000);
-        };
+
+
+        });
+
+        function closePopup() {
+            const popup = document.getElementById("popup");
+            if (popup) {
+                popup.classList.remove("show");
+            }
+        }
     </script>
 
 </body>

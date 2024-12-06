@@ -8,6 +8,7 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 1) {
     $id = $_SESSION['id'];
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -24,10 +25,10 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 1) {
     <link rel="stylesheet" type="text/css" href="../../backend/css/font.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
 
-
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <title>Clínica Salud | Listado de los médicos</title>
+
 </head>
 
 <body>
@@ -35,6 +36,7 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 1) {
     <!-- SIDEBAR -->
     <section id="sidebar">
         <a href="../admin/escritorio.php" class="brand"><i class='bx bxs-heart icon'></i> Clínica Salud</a>
+
         <ul class="side-menu">
             <li><a href="../admin/escritorio.php"><i class='bx bxs-dashboard icon'></i> Dashboard</a></li>
             <li class="divider" data-text="main">Main</li>
@@ -67,7 +69,6 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 1) {
 
                 </ul>
             </li>
-
 
             <li>
                 <a href="#"><i class='bx bxs-user-pin icon'></i> Recursos humanos<i class='bx bx-chevron-right icon-right'></i></a>
@@ -154,7 +155,8 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 1) {
                 <li class="divider">></li>
                 <li><a href="#" class="active">Listado de los médicos</a></li>
             </ul>
-            <button class="button" onclick="location.href='nuevo.php'">Nuevo</button>
+
+            <button class="btn btn-success" onclick="location.href='nuevo.php'">Nuevo</button>
 
             <div class="data">
                 <div class="content-data">
@@ -195,7 +197,6 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 1) {
                                             <td data-title="Sexo"><?php echo $d->sexd ?></td>
                                             <td data-title="Teléfono"><?php echo $d->phd ?></td>
 
-
                                             <td data-title="Estado">
 
                                                 <label class="switch">
@@ -206,14 +207,14 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 1) {
                                             </td>
 
                                             <td>
-                                                <a title="Actualizar" href="../medicos/editar.php?id=<?php echo $d->idodc ?>" class="fa fa-pencil tooltip"></a>
-                                                <a title="Información" href="../medicos/info.php?id=<?php echo $d->idodc ?>" class="fa fa-info"></a>
+                                                <a title="Actualizar" href="../medicos/editar.php?id=<?php echo $d->idodc ?>" class="btn btn-outline-primary">Actualizar</a>
+                                                <a title="Información" href="../medicos/info.php?id=<?php echo $d->idodc ?>" class="btn btn-outline-warning">Informacion</a>
 
 
                                                 <form onsubmit="return confirm('Realmente desea eliminar el registro?');" method='POST' action='<?php $_SERVER['PHP_SELF'] ?>'>
                                                     <input type='hidden' name='idodc' value="<?php echo  $d->idodc; ?>">
 
-                                                    <button name='delete_patients' style="cursor: pointer;" class="fa fa-trash"></button>
+                                                    <button name='delete_patients' style="cursor: pointer;" class="btn btn-outline-danger"><span class="">Eliminar</span></button>
                                                 </form>
 
                                                 <?php

@@ -30,7 +30,7 @@ $events = $req->fetchAll();
     <link rel="stylesheet" href="../../backend/vendor/datatables/dataTables.bs4-custom.css" />
     <link href="../../backend/vendor/datatables/buttons.bs.css" rel="stylesheet" />
 
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <!-- FullCalendar -->
     <link href='../../backend/css/fullcalendar.css' rel='stylesheet' />
@@ -52,7 +52,9 @@ $events = $req->fetchAll();
 
     <!-- SIDEBAR -->
     <section id="sidebar">
+        
         <a href="escritorio.php" class="brand"><i class='bx bxs-heart icon'></i> Clínica Salud</a>
+        
         <ul class="side-menu">
             <li><a href="escritorio.php" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard</a></li>
             <li class="divider" data-text="main">Main</li>

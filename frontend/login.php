@@ -12,6 +12,9 @@ include_once '../backend/php/login.php'
   <!-- Custom CSS -->
   <link rel="stylesheet" href="../backend/css/style.css" />
   <link rel="icon" type="image/png" sizes="96x96" href="../backend/img/ico.svg">
+
+  
+
 </head>
 
 <body>
@@ -34,7 +37,7 @@ include_once '../backend/php/login.php'
         placeholder="Nombre de usuario " />
       <input type="password" required="true" name="password" value="<?php if (isset($_POST['password'])) echo MD5($_POST['password']) ?>" class="form-input span-2" placeholder="Contraseña" />
 
-      <button class="btn submit-btn span-2" name='login' type="submit">Iniciar sesión</button>
+      <button class="btn btn-primary submit-btn span-2" name='login' type="submit">Iniciar sesión</button>
     </form>
     <p class="btm-line">
       By joining, you agree to our Terms of Service and Privacy Policy
