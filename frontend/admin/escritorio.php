@@ -2,17 +2,20 @@
 ob_start();
 session_start();
 
-if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 1) {
+if (!isset($_SESSION['rol']) || ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3)) {
     header('location: ../login.php');
 
     $id = $_SESSION['id'];
+    exit();
 }
-?>
-<?php
+
+$rol = $_SESSION['rol'];
+
 require_once('../../backend/bd/Conexion.php');
 $req = $connect->prepare("SELECT id, title, start, end, color FROM events");
 $req->execute();
 $events = $req->fetchAll();
+
 ?>
 
 <!DOCTYPE html>
@@ -52,9 +55,9 @@ $events = $req->fetchAll();
 
     <!-- SIDEBAR -->
     <section id="sidebar">
-        
-        <a href="escritorio.php" class="brand"><i class='bx bxs-heart icon'></i> Clínica Salud</a>
-        
+
+        <a href="escritorio.php" class="brand"><i class='bx bxs-heart icon'></i> Clínica Salud </a>
+
         <ul class="side-menu">
             <li><a href="escritorio.php" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard</a></li>
             <li class="divider" data-text="main">Main</li>
@@ -168,6 +171,7 @@ $events = $req->fetchAll();
         <!-- MAIN -->
         <main>
             <h1 class="title">Bienvenido <?php echo '<strong>' . $_SESSION['username'] . '</strong>'; ?></h1>
+            <?php echo $rol ?>
             <ul class="breadcrumbs">
                 <li><a href="escritorio.php">Home</a></li>
                 <li class="divider">/</li>
@@ -351,7 +355,7 @@ $events = $req->fetchAll();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
     <!-- Incluir ApexCharts desde la CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
     <script src="../../backend/js/script.js"></script>
 

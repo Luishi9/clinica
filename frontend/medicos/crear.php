@@ -2,10 +2,11 @@
 ob_start();
 session_start();
 
-if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 1) {
+if (!isset($_SESSION['rol']) || ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3)) {
     header('location: ../login.php');
 
     $id = $_SESSION['id'];
+    exit();
 }
 ?>
 <!DOCTYPE html>
