@@ -23,8 +23,7 @@ if (!isset($_SESSION['rol']) || ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3)
     <link rel="stylesheet" type="text/css" href="../../backend/css/buttonsdataTables.css">
     <link rel="stylesheet" type="text/css" href="../../backend/css/font.css">
 
-
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <title>Clínica Salud | Listado de pacientes</title>
 </head>
@@ -206,6 +205,7 @@ if (!isset($_SESSION['rol']) || ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3)
                                                     <span class="slider"></span>
                                                 </label>
                                             </td>
+                                            
                                             <td>
                                                 <a title="Actualizar" href="../pacientes/editar.php?id=<?php echo $d->idpa ?>" class="fa fa-pencil tooltip"></a>
                                                 <a title="Información" href="../pacientes/info.php?id=<?php echo $d->idpa ?>" class="fa fa-info"></a>

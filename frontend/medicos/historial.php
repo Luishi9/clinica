@@ -24,9 +24,8 @@ if (!isset($_SESSION['rol']) || ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3)
     <link rel="stylesheet" type="text/css" href="../../backend/css/font.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
 
-
-
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
     <title>Clínica Salud | Historial de los médicos</title>
 </head>
 
@@ -67,8 +66,6 @@ if (!isset($_SESSION['rol']) || ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3)
 
                 </ul>
             </li>
-
-
 
             <li>
                 <a href="#"><i class='bx bxs-user-pin icon'></i> Recursos humanos<i class='bx bx-chevron-right icon-right'></i></a>
@@ -112,11 +109,7 @@ if (!isset($_SESSION['rol']) || ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3)
 
             <li><a href="../acerca/mostrar.php"><i class='bx bxs-info-circle icon'></i> Acerca de</a></li>
 
-
-
         </ul>
-
-
     </section>
     <!-- SIDEBAR -->
 
@@ -235,7 +228,6 @@ if (!isset($_SESSION['rol']) || ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3)
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.js"></script>
-
     <script src="../../backend/js/script.js"></script>
 
     <!-- Data Tables -->

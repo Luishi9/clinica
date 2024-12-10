@@ -30,16 +30,12 @@ body {
 }
 
 a {
-	text-decoration: none;
+	text-decoration: none !important;
 }
 
 li {
 	list-style: none;
 }
-
-
-
-
 
 /* SIDEBAR */
 #sidebar {
@@ -327,6 +323,8 @@ nav .profile .profile-link a:hover {
 main {
 	width: 100%;
 	padding: 24px 20px 20px 20px;
+  background: #F1F0F6;
+  border-radius: 8px;
 }
 main .title {
 	font-size: 28px;

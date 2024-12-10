@@ -18,8 +18,7 @@ if (!isset($_SESSION['rol']) || ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3)
     <link rel="stylesheet" href="../../backend/css/admin.css">
     <link rel="icon" type="image/png" sizes="96x96" href="../../backend/img/ico.svg">
 
-
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <title>Clínica Salud | Historia clínica del paciente</title>
 </head>
@@ -173,20 +172,20 @@ if (!isset($_SESSION['rol']) || ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3)
                 <?php foreach ($data as $d): ?>
                     <div class="input-block">
 
-                        <a type="button" href="../pacientes/imprimir?id=<?php echo $d->idpa; ?>" class="button">IMPRIMIR</a>
+                        <a type="button" href="../pacientes/imprimir?id=<?php echo $d->idpa; ?>" class="btn btn-success">Imprimir Informacion</a>
 
                         <div class="wrap-line">
 
                             <!-- Inputs -->
                             <div class="brise-input">
 
-                                <input type="text" value="<?php echo $d->numhs; ?>" name="text" required>
+                                <input type="text" class="form-control" value="<?php echo $d->numhs; ?>" name="text" required>
 
                                 <span class="line"></span>
                             </div>
                             <div class="brise-input">
 
-                                <input type="text" value="<?php echo $d->nompa; ?>" name="text" required>
+                                <input type="text" class="form-control" value="<?php echo $d->nompa; ?>" name="text" required>
 
                                 <span class="line"></span>
                             </div>
@@ -194,42 +193,42 @@ if (!isset($_SESSION['rol']) || ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3)
                             <!-- Inputs -->
                             <div class="brise-input">
 
-                                <input type="text" value="<?php echo $d->apepa; ?>" name="text" required>
+                                <input type="text" class="form-control" value="<?php echo $d->apepa; ?>" name="text" required>
 
                                 <span class="line"></span>
                             </div>
                             <div class="brise-input">
 
-                                <input type="text" value="<?php echo $d->direc; ?>" name="text" required>
-
-                                <span class="line"></span>
-                            </div>
-
-                            <div class="brise-input">
-
-                                <input type="text" value="<?php echo $d->cump; ?>" name="text" required>
-
-                                <span class="line"></span>
-                            </div>
-
-
-                            <div class="brise-input">
-
-                                <input type="text" value="<?php echo $d->sex; ?>" name="text" required>
+                                <input type="text" class="form-control" value="<?php echo $d->direc; ?>" name="text" required>
 
                                 <span class="line"></span>
                             </div>
 
                             <div class="brise-input">
 
-                                <input type="text" value="<?php echo $d->grup; ?>" name="text" required>
+                                <input type="text" class="form-control" value="<?php echo $d->cump; ?>" name="text" required>
+
+                                <span class="line"></span>
+                            </div>
+
+
+                            <div class="brise-input">
+
+                                <input type="text" class="form-control" value="<?php echo $d->sex; ?>" name="text" required>
 
                                 <span class="line"></span>
                             </div>
 
                             <div class="brise-input">
 
-                                <input type="text" value="<?php echo $d->phon; ?>" name="text" required>
+                                <input type="text" class="form-control" value="<?php echo $d->grup; ?>" name="text" required>
+
+                                <span class="line"></span>
+                            </div>
+
+                            <div class="brise-input">
+
+                                <input type="text" class="form-control" value="<?php echo $d->phon; ?>" name="text" required>
 
                                 <span class="line"></span>
                             </div>
@@ -244,7 +243,7 @@ if (!isset($_SESSION['rol']) || ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3)
                             <div class="panel">
                                 <div class="boton-modal">
                                     <label for="btn-modal">
-                                        Nuevo
+                                        Agregar
                                     </label>
                                 </div>
 
@@ -268,8 +267,8 @@ if (!isset($_SESSION['rol']) || ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3)
                                         <?php foreach ($data as $e): ?>
                                             <div class="entry" style="margin-top: 20px;" id="tbody">
                                                 <div class="core">
-                                                    <h3><?php echo $e->fere; ?></h3>
-                                                    <?php echo $e->detage; ?>
+                                                    <p><b><?php echo $e->fere; ?></b></p>
+                                                    <p><?php echo $e->detage; ?></p>
                                                 </div>
                                             </div>
 
@@ -284,14 +283,14 @@ if (!isset($_SESSION['rol']) || ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3)
 
                             </div>
 
-                            <button class="accordion">Consulta</button>
+                            <button class="accordion">Motivo de la Consulta</button>
                             <div class="panel">
                                 <div class="botons-modal">
                                     <label for="btns-modal">
-                                        Nuevo
+                                        Agregar
                                     </label>
                                 </div>
-
+                                    <!-- En caso de que haya informacion de consultas se mostrara la informacion -->
                                 <div class="table-responsive" style="overflow-x:auto;">
                                     <?php
                                     $id = $_GET['id'];
@@ -337,7 +336,7 @@ if (!isset($_SESSION['rol']) || ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3)
 
                                 <div class="botons-modals">
                                     <label for="btns-modals">
-                                        Nuevo
+                                        Agregar
                                     </label>
                                 </div>
 
@@ -464,8 +463,6 @@ if (!isset($_SESSION['rol']) || ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3)
     <?php include_once '../../backend/modal/md_consul.php' ?>
     <?php include_once '../../backend/modal/md_trat.php' ?>
 
-
-
     <script type="text/javascript">
         $(document).ready(function() {
             $("#submit").click(function() {
@@ -501,8 +498,6 @@ if (!isset($_SESSION['rol']) || ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3)
             var consl = document.getElementById('consl').value;
             var csidpa = document.getElementById('csidpa').value;
             var csnopa = document.getElementById('csnopa').value;
-
-
 
             var dataen = 'consl=' + consl + '&csidpa=' + csidpa + '&csnopa=' + csnopa;
             //obtenemos el valor de todos los input que te interesan

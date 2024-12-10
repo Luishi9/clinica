@@ -35,6 +35,9 @@ $events = $req->fetchAll();
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+
     <!-- FullCalendar -->
     <link href='../../backend/css/fullcalendar.css' rel='stylesheet' />
     <style type="text/css">
@@ -171,7 +174,7 @@ $events = $req->fetchAll();
         <!-- MAIN -->
         <main>
             <h1 class="title">Bienvenido <?php echo '<strong>' . $_SESSION['username'] . '</strong>'; ?></h1>
-            <?php echo $rol ?>
+        
             <ul class="breadcrumbs">
                 <li><a href="escritorio.php">Home</a></li>
                 <li class="divider">/</li>
@@ -260,20 +263,18 @@ $events = $req->fetchAll();
                         }
                         ?>
                         <?php if (count($data) > 0): ?>
-                            <table id="example" class="responsive-table">
+                            <table id="example" class="table responsive-table table-striped">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Nuevos médicos</th>
-
+                                        <th scope="col" class="text-center">Nuevos médicos</th>
+                                        <th scope="col" class="text-center">Especialidad</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php foreach ($data as $d): ?>
                                         <tr>
-
                                             <td data-title="Paciente"><?php echo $d->nodoc ?>&nbsp;<?php echo $d->apdoc ?></td>
                                             <td data-title="Especialidad"><?php echo $d->nomesp ?></td>
-
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
@@ -306,10 +307,10 @@ $events = $req->fetchAll();
                         }
                         ?>
                         <?php if (count($data) > 0): ?>
-                            <table id="example" class="responsive-table">
+                            <table id="example" class="table responsive-table table-striped">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Nuevos pacientes</th>
+                                        <th scope="col" class="text-center">Nuevos pacientes</th>
 
                                     </tr>
                                 </thead>
@@ -353,9 +354,6 @@ $events = $req->fetchAll();
     <!-- NAVBAR -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-
-    <!-- Incluir ApexCharts desde la CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
     <script src="../../backend/js/script.js"></script>
 

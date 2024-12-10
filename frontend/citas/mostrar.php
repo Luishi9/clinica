@@ -24,6 +24,8 @@ if (!isset($_SESSION['rol']) || ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3)
     <link rel="stylesheet" type="text/css" href="../../backend/css/buttonsdataTables.css">
     <link rel="stylesheet" type="text/css" href="../../backend/css/font.css">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
     <title>Clínica Salud | Listado de las citas</title>
 </head>
 
@@ -205,22 +207,44 @@ if (!isset($_SESSION['rol']) || ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3)
                                                 </label>
                                             </td>
                                             <td>
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <a title="Consultar" href="../pacientes/historia.php?id=<?php echo $d->idpa ?>" class=" btn btn-outline-primary">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-stethoscope">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                            <path d="M6 4h-1a2 2 0 0 0 -2 2v3.5h0a5.5 5.5 0 0 0 11 0v-3.5a2 2 0 0 0 -2 -2h-1" />
+                                                            <path d="M8 15a6 6 0 1 0 12 0v-3" />
+                                                            <path d="M11 3v2" />
+                                                            <path d="M6 3v2" />
+                                                            <path d="M20 10m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                                                        </svg>
+                                                    </a>
 
+                                                    <a title="Información" href="../citas/info.php?id=<?php echo $d->id ?>" class="btn btn-outline-warning btn-sm">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-help-octagon">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                            <path d="M12.802 2.165l5.575 2.389c.48 .206 .863 .589 1.07 1.07l2.388 5.574c.22 .512 .22 1.092 0 1.604l-2.389 5.575c-.206 .48 -.589 .863 -1.07 1.07l-5.574 2.388c-.512 .22 -1.092 .22 -1.604 0l-5.575 -2.389a2.036 2.036 0 0 1 -1.07 -1.07l-2.388 -5.574a2.036 2.036 0 0 1 0 -1.604l2.389 -5.575c.206 -.48 .589 -.863 1.07 -1.07l5.574 -2.388a2.036 2.036 0 0 1 1.604 0z" />
+                                                            <path d="M12 16v.01" />
+                                                            <path d="M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" />
+                                                        </svg>
+                                                    </a>
 
+                                                    <?php
+                                                    if ($d->chec == '0') {
+                                                        // code...
+                                                        echo '<a title="Pago"  href="../citas/money.php?id=' . $d->idpa . '" class="btn btn-outline-warning btn-sm">
+                                                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-coin"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /><path d="M14.8 9a2 2 0 0 0 -1.8 -1h-2a2 2 0 1 0 0 4h2a2 2 0 1 1 0 4h-2a2 2 0 0 1 -1.8 -1" /><path d="M12 7v10" /></svg>
+                                                        </a>';
+                                                    } else {
+                                                        echo '<a title="Boleta"  href="../citas/documento.php?id=' . $d->id . '" class="btn btn-outline-success btn-sm">
+                                                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-file"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4" /><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" /></svg>
+                                                    </a>';
+                                                        echo '<a title="Ticket"  href="../citas/ticket.php?id=' . $d->id . '" class="btn btn-outline-info btn sm">
+                                                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-ticket"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 5l0 2" /><path d="M15 11l0 2" /><path d="M15 17l0 2" /><path d="M5 5h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-3a2 2 0 0 0 0 -4v-3a2 2 0 0 1 2 -2" /></svg>
+                                                    </a>';
+                                                    }
 
-                                                <a title="Información" href="../citas/info.php?id=<?php echo $d->id ?>" class="fa fa-info"></a>
-
-
-                                                <?php
-                                                if ($d->chec == '0') {
-                                                    // code...
-                                                    echo '<a title="Pago"  href="../citas/money.php?id=' . $d->idpa . '" class="fa fa-money"></a>';
-                                                } else {
-                                                    echo '<a title="Boleta"  href="../citas/documento.php?id=' . $d->id . '" class="fa fa-file-text-o"></a>';
-                                                    echo '<a title="Ticket"  href="../citas/ticket.php?id=' . $d->id . '" class="fa fa-ticket"></a>';
-                                                }
-
-                                                ?>
+                                                    ?>
+                                                </div>
 
 
 
@@ -267,9 +291,38 @@ if (!isset($_SESSION['rol']) || ($_SESSION['rol'] != 1 && $_SESSION['rol'] != 3)
             });
         });
     </script>
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
+    <?php
+    include_once '../../backend/modal/md_consul.php'
+    ?>
+
+
+    <script type="text/javascript">
+        function enviar() {
+            var consl = document.getElementById('consl').value;
+            var csidpa = document.getElementById('csidpa').value;
+            var csnopa = document.getElementById('csnopa').value;
+
+            var dataen = 'consl=' + consl + '&csidpa=' + csidpa + '&csnopa=' + csnopa;
+            //obtenemos el valor de todos los input que te interesan
+            $.ajax({
+                type: "POST", //definimos el método de envío
+                url: "../pacientes/add_consut.php", //el archivo al cual se enviaran
+                data: dataen,
+                cache: false,
+                success: function(result) {
+
+                    swal(
+                        'Agregado correctamente',
+                        'Buen trabajo',
+                        'success'
+                    )
+                }
+            });
+        };
+    </script>
+
 
 </body>
 

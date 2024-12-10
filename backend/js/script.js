@@ -152,6 +152,7 @@ allProgress.forEach(item => {
 
 
 // APEXCHART
+/*
 var options = {
 	series: [{
 		name: 'series1',
@@ -183,3 +184,4 @@ var options = {
 
 var chart = new ApexCharts(document.querySelector('#chart'), options);
 chart.render();
+*/
