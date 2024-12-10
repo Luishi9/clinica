@@ -37,14 +37,14 @@ include_once '../backend/php/login.php'
               }
 
               ?>
-              <form action="#!">
+              <form action="" method="POST" autocomplete="off">
                 <div class="row gy-2 overflow-hidden">
                   <div class="col-12">
                     <div class="form-floating mb-3">
                       <input
                         type="text" name="username" value="<?php if (isset($_POST['username'])) echo $_POST['username'] ?>" autocomplete="off"
                         class="form-control"
-                        placeholder="Nombre de usuario " required="true" />
+                        placeholder="Nombre de usuario " />
                       <label for="email" class="form-label">Usuario</label>
                     </div>
                   </div>
@@ -57,7 +57,7 @@ include_once '../backend/php/login.php'
 
                   <div class="col-12">
                     <div class="d-grid my-3">
-                      <button class="btn btn-primary btn-lg" type="submit">Iniciar sesión</button>
+                      <button class="btn btn-primary btn-lg" type="submit" name='login'>Iniciar sesión</button>
                     </div>
                   </div>
                   <div class="col-12">
@@ -94,7 +94,7 @@ include_once '../backend/php/login.php'
       By joining, you agree to our Terms of Service and Privacy Policy
     </p>
   </div>
-            -->
+  -->
 
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
