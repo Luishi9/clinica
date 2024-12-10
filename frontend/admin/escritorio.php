@@ -33,6 +33,7 @@ $events = $req->fetchAll();
     <link rel="stylesheet" href="../../backend/vendor/datatables/dataTables.bs4-custom.css" />
     <link href="../../backend/vendor/datatables/buttons.bs.css" rel="stylesheet" />
 
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -54,12 +55,121 @@ $events = $req->fetchAll();
     <title>Clínica Salud | Panel administrativo</title>
 </head>
 
-<body>
+<body class="container">
 
     <!-- SIDEBAR -->
-    <section id="sidebar">
+    <section id="sidebar" class="bg-light border-end">
 
-        <a href="escritorio.php" class="brand"><i class='bx bxs-heart icon'></i> Clínica Salud </a>
+        <div class="p-3">
+            <a href="escritorio.php" class="navbar-brand d-flex align-items-center mb-3">
+                <i class="bx bxs-heart me-2"></i> Clínica Salud
+            </a>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="escritorio.php" class="nav-link active">
+                        <i class="bx bxs-dashboard me-2"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item text-uppercase fw-bold small text-muted mt-3">Main</li>
+                <!-- Citas -->
+                <li class="nav-item">
+                    <a class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#citasMenu" role="button" aria-expanded="false" aria-controls="citasMenu">
+                        <i class="bx bxs-book-alt me-2"></i> Citas
+                        <i class="bx bx-chevron-down"></i>
+                    </a>
+                    <ul class="collapse list-unstyled ms-3" id="citasMenu">
+                        <li><a href="../citas/mostrar.php" class="nav-link">Todas las citas</a></li>
+                        <li><a href="../citas/nuevo.php" class="nav-link">Nueva</a></li>
+                        <li><a href="../citas/calendario.php" class="nav-link">Calendario</a></li>
+                    </ul>
+                </li>
+                <!-- Pacientes -->
+                <li class="nav-item">
+                    <a class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#pacientesMenu" role="button" aria-expanded="false" aria-controls="pacientesMenu">
+                        <i class="bx bxs-user me-2"></i> Pacientes
+                        <i class="bx bx-chevron-down"></i>
+                    </a>
+                    <ul class="collapse list-unstyled ms-3" id="pacientesMenu">
+                        <li><a href="../pacientes/mostrar.php" class="nav-link">Lista de pacientes</a></li>
+                        <li><a href="../pacientes/pagos.php" class="nav-link">Pagos</a></li>
+                        <li><a href="../pacientes/historial.php" class="nav-link">Historial de los pacientes</a></li>
+                        <li><a href="../pacientes/documentos.php" class="nav-link">Documentos</a></li>
+                    </ul>
+                </li>
+                <!-- Médicos -->
+                <li class="nav-item">
+                    <a class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#medicosMenu" role="button" aria-expanded="false" aria-controls="medicosMenu">
+                        <i class="bx bxs-briefcase me-2"></i>
+                        Médicos
+                        <i class="bx bx-chevron-down"></i>
+                    </a>
+                    <ul class="collapse list-unstyled ms-3" id="medicosMenu">
+                        <li><a href="../medicos/mostrar.php" class="nav-link">Lista de médicos</a></li>
+                        <li><a href="../medicos/historial.php" class="nav-link">Historial de los médicos</a></li>
+                    </ul>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#recursosHumanosMenu" role="button" aria-expanded="false" aria-controls="recursosHumanosMenu">
+                        <i class="bx bxs-briefcase me-2"></i>
+                        Recursos humanos
+                        <i class="bx bx-chevron-down"></i>
+                    </a>
+                    <ul class="collapse list-unstyled ms-3" id="recursosHumanosMenu">
+                        <li><a href="../recursos/enfermera.php" class="nav-link">Enfermera</a></li>
+                        <li><a href="../recursos/laboratiorios.php" class="nav-link">Laboratorios</a></li>
+
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#actividadesMenu" role="button" aria-expanded="false" aria-controls="actividadesMenu">
+                        <i class="bx bxs-briefcase me-2"></i>
+                        Actividades financieras
+                        <i class="bx bx-chevron-down"></i>
+                    </a>
+                    <ul class="collapse list-unstyled ms-3" id="actividadesMenu">
+                        <li><a href="../actividades/mostrar.php" class="nav-link">Pagos</a></li>
+                        <li><a href="../actividades/nuevo.php" class="nav-link">Nuevo pago</a></li>
+
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#medicinaMenu" role="button" aria-expanded="false" aria-controls="medicinaMenu">
+                        <i class="bx bxs-briefcase me-2"></i> Medicina
+                        <i class='bx bx-chevron-right icon-right'></i>
+                    </a>
+                    <ul class="collapse list-unstyled ms-3" id="medicinaMenu">
+                        <li><a href="../medicinas/venta.php" class="nav-link">Vender</a></li>
+                        <li><a href="../medicinas/mostrar.php" class="nav-link">Listado</a></li>
+                        <li><a href="../medicinas/nuevo.php" class="nav-link">Nueva</a></li>
+                        <li><a href="../medicinas/categoria.php" class="nav-link">Categoria</a></li>
+
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#ajustesMenu" role="button" aria-expanded="false" aria-controls="ajustesMenu">
+                        <i class="bx bxs-briefcase me-2"></i> Ajustes
+                        <i class='bx bx-chevron-right icon-right'></i>
+                    </a>
+                    <ul class="collapse list-unstyled ms-3" id="ajustesMenu">
+                        <li><a href="../ajustes/mostrar.php" class="nav-link">Ajustes</a></li>
+                        <li><a href="../ajustes/idioma.php" class="nav-link">Idioma</a></li>
+                        <li><a href="../ajustes/base.php" class="nav-link">Base de datos</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="../acerca/mostrar.php" class="nav-link">
+                        <i class="bx bxs-info-circle me-2"></i> Acerca de
+                    </a>
+                </li>
+
+            </ul>
+        </div>
 
         <ul class="side-menu">
             <li><a href="escritorio.php" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard</a></li>
@@ -372,6 +482,10 @@ $events = $req->fetchAll();
     <script src='../../backend/js/fullcalendar/fullcalendar.min.js'></script>
     <script src='../../backend/js/fullcalendar/fullcalendar.js'></script>
     <script src='../../backend/js/fullcalendar/locale/es.js'></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 
     <script>
         $(document).ready(function() {
